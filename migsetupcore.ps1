@@ -1,5 +1,15 @@
 $migVarName;
 $choice = Read-Host "Установить EntityFramework перед миграцией? (Y/N)";
+
+if ($choice -eq "y") {
+    dotnet add package Microsoft.EntityFrameworkCore;
+    Menu;
+}
+if ($choice -eq "n") { Menu; }
+else {
+    Write-Output "Неверный ввод!";
+    $choice = Read-Host "Установить EntityFramework перед миграцией? (Y/N)";
+}
     
 function Menu {
     Write-Output "`n----Мастер миграции Code First в EF Core----";
